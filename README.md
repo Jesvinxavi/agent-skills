@@ -1,4 +1,4 @@
-# Agent Skills (Elite Configuration)
+# Backlog Agent Orchestration (Elite Configuration)
 
 This repository serves as the **"Brain"** for AI Agents in your projects. It contains specialized Skills, Workflows, and Configurations designed to supercharge your development process.
 
@@ -10,7 +10,7 @@ To install these skills into a new or existing project, run the installation scr
 
 ```bash
 # Installs Backlog.md CLI + This Configuration
-curl -sL https://raw.githubusercontent.com/Jesvinxavi/agent-skills/main/scripts/scaffold-agents.sh | bash
+curl -sL https://raw.githubusercontent.com/Jesvinxavi/backlog-agent-orchestration/main/scripts/scaffold-agents.sh | bash
 ```
 
 ## 🔄 Development Lifecycle

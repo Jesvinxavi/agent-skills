@@ -29,7 +29,7 @@ fi
 # 2. Validation
 if [ ! -d "$TARGET_REPO/.git" ]; then
     echo "❌ Error: '$TARGET_REPO' is not a valid Git repository."
-    echo "   Please clone your central repo first: git clone https://github.com/jesvinxavi/backlog-agent-orchestration.git"
+    echo "   Please clone your central repo first: git clone https://github.com/Jesvinxavi/Backlog-Agent-Orchastration.git"
     exit 1
 fi
 

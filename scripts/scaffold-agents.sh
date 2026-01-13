@@ -9,7 +9,7 @@
 # =================================================================================
 
 VERSION="2.1.0"
-REPO_URL="https://github.com/jesvinxavi/backlog-agent-orchestration.git"
+REPO_URL="https://github.com/Jesvinxavi/Backlog-Agent-Orchastration.git"
 SOURCE_DIR=".agent/.source-repo"
 LOCAL_DEV_PATH="agent-skills-package" # Fallback for local testing before push
 
@@ -20,7 +20,7 @@ LOCAL_DEV_PATH="agent-skills-package" # Fallback for local testing before push
 if [[ "$1" == "--check-updates" ]]; then
     echo "🔍 Checking for updates..."
     # Fetch raw script from main branch
-    REMOTE_VERSION=$(curl -sL https://raw.githubusercontent.com/Jesvinxavi/backlog-agent-orchestration/main/scripts/scaffold-agents.sh | grep 'VERSION="' | head -1 | cut -d'"' -f2)
+    REMOTE_VERSION=$(curl -sL https://raw.githubusercontent.com/Jesvinxavi/Backlog-Agent-Orchastration/main/scripts/scaffold-agents.sh | grep 'VERSION="' | head -1 | cut -d'"' -f2)
     
     if [[ "$VERSION" != "$REMOTE_VERSION" ]]; then
         echo "⚠️  Update Available: v$REMOTE_VERSION (Current: v$VERSION)"

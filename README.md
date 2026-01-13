@@ -10,7 +10,7 @@ To install these skills into a new or existing project, run the installation scr
 
 ```bash
 # Installs Backlog.md CLI + This Configuration
-curl -sL https://raw.githubusercontent.com/Jesvinxavi/backlog-agent-orchestration/main/scripts/scaffold-agents.sh | bash
+curl -sL https://raw.githubusercontent.com/Jesvinxavi/Backlog-Agent-Orchastration/main/scripts/scaffold-agents.sh | bash
 ```
 
 ## 🔄 Development Lifecycle

@@ -56,33 +56,32 @@ if ! command -v backlog &> /dev/null; then
     echo "📦 Installing backlog.md globally..."
     
     # Attempt 1: Standard install (works for nvm users or if permissions are ok)
-    INSTALL_OUTPUT=$(npm install -g backlog.md 2>&1)
-    INSTALL_EXIT_CODE=$?
+    # Note: We use "|| true" to prevent "set -e" from exiting the script on failure
+    INSTALL_OUTPUT=$(npm install -g backlog.md 2>&1) || true
     
-    if [[ $INSTALL_EXIT_CODE -eq 0 ]]; then
+    # Check if installation succeeded by looking for success indicators
+    if echo "$INSTALL_OUTPUT" | grep -qE "added [0-9]+ packages|up to date"; then
         echo "   ✅ Successfully installed backlog.md"
-    else
-        # Check if it was a permission error
-        if echo "$INSTALL_OUTPUT" | grep -qiE "EACCES|permission denied|EPERM"; then
-            echo "   🚫 Permission denied. Trying with elevated permissions..."
-            
-            # Attempt 2: Sudo install
-            if sudo npm install -g backlog.md; then
-                echo "   ✅ Successfully installed backlog.md (via sudo)"
-            else
-                echo ""
-                echo "   ⚠️  Could not install globally. Falling back to npx mode."
-                echo "      (All features work, but no shell tab-completion)"
-                USE_NPX=true
-            fi
+    elif echo "$INSTALL_OUTPUT" | grep -qiE "EACCES|permission denied|EPERM"; then
+        # Permission error - try sudo
+        echo "   🚫 Permission denied. Trying with elevated permissions..."
+        
+        # Attempt 2: Sudo install
+        if sudo npm install -g backlog.md; then
+            echo "   ✅ Successfully installed backlog.md (via sudo)"
         else
-            # Some other error (network, package not found, etc)
-            echo "   ❌ Installation failed:"
-            echo "$INSTALL_OUTPUT"
             echo ""
-            echo "   Please check your network connection and try again."
-            exit 1
+            echo "   ⚠️  Could not install globally. Falling back to npx mode."
+            echo "      (All features work, but no shell tab-completion)"
+            USE_NPX=true
         fi
+    else
+        # Some other error (network, package not found, etc)
+        echo "   ❌ Installation failed:"
+        echo "$INSTALL_OUTPUT"
+        echo ""
+        echo "   Please check your network connection and try again."
+        exit 1
     fi
 fi
 

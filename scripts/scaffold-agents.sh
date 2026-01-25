@@ -200,6 +200,17 @@ main() {
         echo "   ✅ Config installed"
     fi
 
+    # C4. Update project name to match current directory
+    PROJECT_NAME=$(basename "$(pwd)")
+    if [ -f "backlog/config.yml" ]; then
+        # Replace the placeholder project name with actual directory name
+        if grep -q 'project_name: "CoupleLink"' backlog/config.yml; then
+            sed -i.tmp "s/project_name: \"CoupleLink\"/project_name: \"$PROJECT_NAME\"/" backlog/config.yml
+            rm -f backlog/config.yml.tmp
+            echo "   ✅ Project name set to: $PROJECT_NAME"
+        fi
+    fi
+
     # D. Documentation & Knowledge
     echo "📚 Installing Documentation..."
     if [ -f "$SOURCE_DIR/backlog/docs/SKILLS-SYSTEM.md" ]; then

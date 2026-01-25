@@ -15,8 +15,8 @@ curl -sL https://raw.githubusercontent.com/Jesvinxavi/Backlog-Agent-Orchastratio
 
 ### After Installation
 ```bash
-# Open the web dashboard (Kanban board)
-backlog board
+# Open the web dashboard in your browser
+backlog browser
 ```
 
 ---
@@ -25,13 +25,14 @@ backlog board
 
 | Command | What it does |
 |---------|--------------|
-| `backlog board` | Open web dashboard (Kanban view) |
+| `backlog browser` | Open web dashboard in browser |
+| `backlog board` | Show Kanban board in terminal |
 | `backlog task list` | List all tasks in terminal |
 | `backlog task list --status "To Do"` | Filter by status |
 | `backlog task create "My Task"` | Create a new task |
 | `backlog task update TASK-1 --status "Done"` | Update task status |
 | `backlog search "auth"` | Search tasks and specs |
-| `backlog adr create "Use Postgres"` | Create Architecture Decision Record |
+| `backlog overview` | Display project statistics |
 
 ---
 

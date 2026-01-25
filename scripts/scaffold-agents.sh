@@ -105,7 +105,8 @@ fi
 if [ ! -f "backlog/config.yml" ] && [ ! -d "backlog" ]; then
     echo "✨ Initializing Backlog Project..."
     # Run init --defaults to get the skeleton
-    if ! npx backlog.md init --defaults 2>&1; then
+    # IMPORTANT: Redirect stdin from /dev/null to prevent npx from consuming the piped script
+    if ! npx backlog.md init --defaults < /dev/null 2>&1; then
         echo "   ⚠️  Backlog init had issues (continuing anyway)..."
     fi
 fi
